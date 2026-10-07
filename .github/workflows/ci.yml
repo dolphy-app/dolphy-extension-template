@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      # the pnpm version comes from `packageManager` in package.json
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      # Lockfiles live in the extension folders (one per extension, so a
+      # folder can move into a catalog pull request as it is). They are
+      # created by `pnpm install` and committed once the @dolphy-app packages
+      # in them are published; until then there is nothing to freeze and
+      # `--no-frozen-lockfile` resolves the dependencies. After the first
+      # commit of the lockfiles switch this to `--frozen-lockfile`.
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm validate
+      # the catalog rules; the GitHub API check of `author` stays off here
+      - run: pnpm check

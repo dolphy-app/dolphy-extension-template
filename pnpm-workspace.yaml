@@ -1,0 +1,7 @@
+packages:
+  - extensions/*
+
+# One lockfile per extension, next to its package.json. The catalog checks
+# every extension folder on its own (`CHECK-008`: a lockfile inside the folder)
+# and an extension must be movable into a catalog pull request as it is.
+sharedWorkspaceLockfile: false

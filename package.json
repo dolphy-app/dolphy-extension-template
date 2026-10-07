@@ -1,0 +1,26 @@
+{
+  "name": "dolphy-extension-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Template repository for Dolphy extensions: four ready-to-build examples in a pnpm workspace that mirrors the catalog layout.",
+  "type": "module",
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "validate": "pnpm -r validate",
+    "check": "dolphy-ext catalog check extensions --skip-github-check",
+    "dev": "node scripts/dev.mjs",
+    "create:extension": "node scripts/create-extension.mjs",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@dolphy-app/create-extension": "^0.5.0",
+    "@dolphy-app/extension-tools": "^0.5.0",
+    "prettier": "^3.9.9"
+  }
+}
