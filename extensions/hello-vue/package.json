@@ -1,0 +1,27 @@
+{
+  "name": "hello-vue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "dolphy-ext build",
+    "dev": "dolphy-ext dev",
+    "watch": "dolphy-ext build --watch",
+    "typecheck": "tsc",
+    "validate": "dolphy-ext validate dist-ext/hello-vue",
+    "lint": "dolphy-ext lint",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@dolphy-app/extension-api": "^0.5.0",
+    "@dolphy-app/extension-sdk": "^0.5.0",
+    "@dolphy-app/extension-tools": "^0.5.0",
+    "@types/node": "^22.20.4",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "happy-dom": "^20.14.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2",
+    "vue": "^3.5.35",
+    "vuetify": "^4.0.1"
+  }
+}

@@ -26,7 +26,7 @@ const ROOT_FILES = ['.github', '.gitignore', 'AGENTS.md', 'CLAUDE.md'];
 
 const USAGE = `usage: pnpm create:extension [<id>] [--template <name>]
 
-  <id>               extension id, for example acme.my-extension; the folder is
+  <id>               extension id, for example my-extension; the folder is
                      extensions/<id>
   --template <name>  ${TEMPLATES.map(([name]) => name).join(', ')}
                      (asked for in a terminal when missing)
@@ -87,7 +87,7 @@ let { id, template } = parseArgs(process.argv.slice(2));
 const interactive = process.stdin.isTTY === true;
 if (id === undefined) {
   if (!interactive) fail(`no extension id given\n${USAGE}`);
-  id = await ask('Extension id (for example acme.my-extension): ');
+  id = await ask('Extension id (for example my-extension): ');
   if (id === '') fail(`no extension id given\n${USAGE}`);
 }
 if (template === undefined) {

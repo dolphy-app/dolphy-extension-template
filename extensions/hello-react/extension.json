@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/@dolphy-app/extension-api/dist/extension.schema.json",
+  "id": "hello-react",
+  "version": "1.0.0",
+  "apiVersion": 1,
+  "name": "Hello (React)",
+  "description": "Palette commands, a panel and a card in the daily plan, all drawn with React.",
+  "author": "your-github-login",
+  "tags": ["productivity"]
+}

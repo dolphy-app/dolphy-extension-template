@@ -1,7 +1,7 @@
 # Dolphy extension template
 
 A template repository for writing [Dolphy](https://github.com/dolphy-app/dolphy)
-extensions. It holds four working examples in a pnpm workspace whose layout
+extensions. It holds two working examples in a pnpm workspace whose layout
 repeats the one of the extension catalog
 ([`dolphy-app/dolphy-extensions`](https://github.com/dolphy-app/dolphy-extensions)):
 every folder in `extensions/` can be moved into a catalog pull request as it
@@ -30,12 +30,10 @@ Keep the examples you need, delete the rest, and add your own with
 
 ## Examples
 
-| Folder                                            | What it shows                                                                                                                                                                   |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`acme.hello-vue`](extensions/acme.hello-vue)     | A Vue interface: palette commands, a panel and a card in "Today's plan", all written as single-file components (`.vue`, `<v-btn>`, `<style scoped>`).                           |
-| [`acme.hello-react`](extensions/acme.hello-react) | The same drawn with React (`"frameworks": ["react"]`, `reactComponent`), and a card that calls the server part with `useRpc` and the window with `useApp`.                      |
-| [`acme.streak`](extensions/acme.streak)           | A server and a client working together: a learning-event handler with storage, a typed RPC contract, a hook that reorders the practice batch, and a Vue card in the daily plan. |
-| [`acme.night-theme`](extensions/acme.night-theme) | A color theme: data only, no server part, no components, with a contrast test.                                                                                                  |
+| Folder                                  | What it shows                                                                                                                                              |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`hello-vue`](extensions/hello-vue)     | A Vue interface: palette commands, a panel and a card in "Today's plan", all written as single-file components (`.vue`, `<v-btn>`, `<style scoped>`).      |
+| [`hello-react`](extensions/hello-react) | The same drawn with React (`"frameworks": ["react"]`, `reactComponent`), and a card that calls the server part with `useRpc` and the window with `useApp`. |
 
 Each folder has its own README that explains the files.
 
@@ -52,7 +50,7 @@ work on every extension (`pnpm -r`).
 | `pnpm typecheck`               | `tsc` for each extension. It does not look inside `.vue` files.                                                          |
 | `pnpm validate`                | `dolphy-ext validate` on the built directories: the manifest is parsed the way the app does it (run after `pnpm build`). |
 | `pnpm check`                   | `dolphy-ext catalog check extensions --skip-github-check`: the rules the catalog applies to a pull request (see below).  |
-| `pnpm dev <id> [--app <path>]` | `dolphy-ext dev` for one extension, for example `pnpm dev acme.streak`.                                                  |
+| `pnpm dev <id> [--app <path>]` | `dolphy-ext dev` for one extension, for example `pnpm dev hello-vue`.                                                    |
 | `pnpm create:extension [<id>]` | A new extension in `extensions/<id>` (see below).                                                                        |
 | `pnpm format`                  | Prettier over the whole repository.                                                                                      |
 
@@ -63,7 +61,7 @@ check, so put your real login into `author` before you publish.
 
 ### `pnpm dev <id>`
 
-`pnpm dev acme.hello-vue` runs `dolphy-ext dev` in `extensions/acme.hello-vue`.
+`pnpm dev hello-vue` runs `dolphy-ext dev` in `extensions/hello-vue`.
 It starts a watch build of the extension and the installed Dolphy app with
 `DOLPHY_DEV_EXTENSIONS=<extension>/dist-ext`, so the app lists the extension
 (origin `dev`) and applies every rebuild without a restart and without
@@ -99,7 +97,7 @@ ranges) and a project must not have install or publish scripts (`postinstall`,
 ## Create your own extension
 
 ```sh
-pnpm create:extension acme.my-extension --template react-panel
+pnpm create:extension my-extension --template react-panel
 ```
 
 The script wraps `create-dolphy-extension`: it makes `extensions/<id>` from a
@@ -172,7 +170,7 @@ commit the file next to `pnpm-lock.yaml`.
   catalog review also runs) warns `CHECK-022` ("dynamic code execution") for an
   extension that bundles `zod`, which every RPC contract needs: zod runs
   `new Function('')` once to find out whether code generation is allowed. It is
-  a heuristic warning, not an error; `acme.hello-react` and `acme.streak` show
+  a heuristic warning, not an error; `hello-react` shows
   it.
 
 ## Layout
@@ -180,10 +178,8 @@ commit the file next to `pnpm-lock.yaml`.
 ```
 dolphy-extension-template/
   extensions/
-    acme.hello-vue/      # Vue single-file components: commands, panel, card
-    acme.hello-react/    # the same in React, plus RPC and the window API
-    acme.streak/         # events, storage, RPC, hook and a Vue card
-    acme.night-theme/    # a theme
+    hello-vue/           # Vue single-file components: commands, panel, card
+    hello-react/         # the same in React, plus RPC and the window API
   scripts/               # create-extension.mjs, dev.mjs
   .github/workflows/ci.yml
   package.json  pnpm-workspace.yaml  AGENTS.md

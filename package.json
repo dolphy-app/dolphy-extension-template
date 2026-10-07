@@ -2,7 +2,7 @@
   "name": "dolphy-extension-template",
   "version": "1.0.0",
   "private": true,
-  "description": "Template repository for Dolphy extensions: four ready-to-build examples in a pnpm workspace that mirrors the catalog layout.",
+  "description": "Template repository for Dolphy extensions: two ready-to-build examples in a pnpm workspace that mirrors the catalog layout.",
   "type": "module",
   "packageManager": "pnpm@12.9.1",
   "engines": {

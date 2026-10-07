@@ -23,8 +23,8 @@ and the manifest.
   - `dolphy-ext.config.json` — only for React (`"frameworks": ["react"]`) and
     extra Node entries;
   - `dist-ext/<id>/` — the build output; never edit or commit it.
-- `extensions/acme.*` — the examples (Vue, React, a server and client pair, a
-  theme). Read the one closest to the task before writing new code.
+- `extensions/*` — the examples (Vue and React). Read the one closest to the
+  task before writing new code.
 - `scripts/create-extension.mjs` — `pnpm create:extension`; `scripts/dev.mjs` —
   `pnpm dev <id>`.
 - `.github/workflows/ci.yml` — runs the commands below on every push and pull
@@ -61,10 +61,10 @@ Before a pull request run `pnpm typecheck`, `pnpm test`, `pnpm build`,
   `name`, `description`, `author`, `tags`). Contributions are registered by code:
   `server` (`defineServer`) and/or `client` (`defineClient`). The folder name
   equals the `id`.
-- Write ids in the code prefixed with the extension id (`acme.streak.card`): a
+- Write ids in the code prefixed with the extension id (`my-extension.card`): a
   command, a panel, an injection, a setting, an exercise type. The host and the
   window refuse an id that is taken or does not carry the prefix. RPC names
-  (`defineRpc`) are lower-case segments such as `streak.status`.
+  (`defineRpc`) are lower-case segments such as `my-extension.status`.
 - The server part must not import `vue`, `vuetify`, components or anything
   client-only. The client part must not import `node:*`. Keep both parts in
   separate files that `src/index.ts` re-exports, and keep the top level of
