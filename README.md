@@ -128,6 +128,9 @@ and the recipes next to it.
 1. Replace `your-github-login` in `author` of `extension.json` with your GitHub
    login, give the extension a real `name`, `description` (at least 20
    characters) and `tags`, and keep a `README.md` that says what it does.
+   `name` and `description` are a string or `{ "en": "…", "ru": "…" }` (the
+   app shows the text in its language); the object form needs `minAppVersion`
+   0.7.0 or newer.
 2. Run `pnpm install`, `pnpm test`, `pnpm build`, `pnpm validate` and `pnpm check`.
 3. Fork [`dolphy-app/dolphy-extensions`](https://github.com/dolphy-app/dolphy-extensions)
    and copy `extensions/<id>` into `extensions/<id>` of the fork (the folder
